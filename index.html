@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaniv Scorecard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+    <h1>Yaniv Scoreboard</h1>
+    <div class="how-to-play">
+    <a href="./rules.html">How to play Yaniv!</a>
+    </div>
+    <div class="add-names">
+        <h2>Add player names</h2>
+        <div class="name-input-container">
+            <input class="name-input" name="player1Name" max-length="20" class="#" placeholder="Enter player 1 name" type="text" id="player1Name">
+            <input class="add-name-btn" type="button" value="Add name" id="addPlayer1Name">
+        </div>
+        <div class="name-input-container">
+            <input class="name-input" name="player2Name" max-length="20" class="#" placeholder="Enter player 2 name" type="text" id="player2Name">
+            <input class="add-name-btn" type="button" value="Add name" id="addPlayer2Name">
+        </div>
+        <div class="name-input-container">
+            <input class="name-input" name="player3Name" max-length="20" class="#" placeholder="Enter player 3 name" type="text" id="player3Name">
+            <input class="add-name-btn" type="button" value="Add name" id="addPlayer3Name">
+        </div>
+        <div class="name-input-container">
+            <input class="name-input" name="player4Name" max-length="20" class="#" placeholder="Enter player 4 name" type="text" id="player4Name">
+            <input class="add-name-btn" type="button" value="Add name" id="addPlayer4Name">
+        </div>
+    </div>
+    <div class="scoreboard">
+        <div class="player-score">
+        <h4 id="player1NameOutput">Player 1</h4>
+            <input id="teamAScoreInput" type="number">
+              <button class="p1Btn" onclick="addScore('teamA')">Add score</button>
+              <span id="teamAScore">0</span>
+        </div>
+        <div class="player-score">
+            <h4 id="player2NameOutput">Player 2</h4>
+              <input id="teamBScoreInput" type="number">
+              <button onclick="addScore('teamB')">Add score</button>
+              <span id="teamBScore">0</span>
+        </div>
+        <div class="player-score">
+            <h4 id="player3NameOutput">Player 3</h4>
+                <input id="teamCScoreInput" type="number">
+                <button onclick="addScore('teamC')">Add score</button>
+                <span id="teamCScore">0</span>
+        </div>
+        <div class="player-score">
+            <h4 id="player4NameOutput">Player 4</h4>
+                <input id="teamDScoreInput" type="number">
+                <button onclick="addScore('teamD')">Add score</button>
+                <span id="teamDScore">0</span>
+        </div>
+    </div>
+    <div class="reset">
+        <button id="resetBtn">Reset scores</button>
+    </div>
+    <!-- <div class="winner">
+        <h2>The winner is</h2>
+        <div id="winner"></div>
+    </div> -->
+</body>
+</html>

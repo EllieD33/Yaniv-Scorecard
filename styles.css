@@ -1,0 +1,224 @@
+*{
+    color: #383838;
+    background-color:#8A307F;
+    font-family: 'Roboto Flex', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.how-to-play{
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 300px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.how-to-play a{  
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+a:link, a:visited {
+  background-color: #6883BC;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #79A7D3;
+}
+
+h1{
+  text-align: center;
+  font-size: 8vw;
+  background-color: #79A7D3;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+h4{
+  font-size: 2rem;
+  font-weight:normal;
+  margin: 5px;
+  background-color: #6883BC;
+}
+
+.add-names{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin:15px;
+  align-items: center;
+  background-color: #79A7D3;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.add-names h2{
+  background-color: #79A7D3;
+  padding: 2px;
+}
+
+.name-input-container{
+  background-color: #79A7D3;
+}
+
+.name-input{
+  font-size: 1rem;
+  height: auto;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  background-color: #e0d2d2;
+  padding: 2px;
+}
+
+.add-name-btn{
+  border: 0;
+  border-radius: 5px;
+  color: #e0d2d2;
+  background-color: rgb(70, 70, 70);
+  height: auto;
+  font-size: 1rem;
+  margin:5px;
+  padding:4px;
+}
+
+.add-name-btn:hover{
+  color: rgb(70, 70, 70);
+  background-color: #e0d2d2;
+}
+
+.scoreboard{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color:#79A7D3;
+  margin:15px;
+  border-radius: 5px;
+}
+
+.player-score{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin:10px;
+  align-items: center;
+  background-color: #6883BC;
+  border-radius: 5px;
+}
+
+.player-score button{
+  border: 0;
+  border-radius: 5px;
+  color: #e0d2d2;
+  background-color: rgb(70, 70, 70);
+  height: auto;
+  font-size: 2rem;
+  margin:5px;
+  padding:4px;
+}
+
+.player-score button:hover{
+  color: rgb(70, 70, 70);
+  background-color: #e0d2d2;
+}
+
+.player-score input{
+  font-size: 2rem;
+  max-width: 60px;
+  height: auto;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  background-color: #e0d2d2;
+}
+
+.player-score span{
+  width: 100px;
+  font-size: 2rem;
+  background-color: #6883BC;
+}
+
+.reset{
+  display: flex;
+  margin: 0 auto;
+  max-width: 300px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#resetBtn{
+  border: 0;
+  border-radius: 5px;
+  color: #e0d2d2;
+  background-color: rgb(214, 0, 0);
+  height: auto;
+  font-size: 2rem;
+  margin:5px;
+  padding:4px;
+}
+
+#resetBtn:hover{
+  background-color: rgb(136, 23, 23);
+}
+
+/* .winner h2{
+  text-align: center;
+  font-size: 3rem;
+  background-color:#6883BC;
+} */
+
+.rules h2{
+  font-size: 3rem;
+  font-weight:bolder;
+  padding: 5px;
+  background-color: #6883BC;
+}
+
+.rules h3{
+  font-size: 2rem;
+  font-weight:bold;
+  padding: 5px;
+  background-color: #6883BC;
+}
+
+.rules h4{
+  font-size: 2rem;
+  font-weight:normal;
+  padding: 5px;
+  background-color: #6883BC;
+}
+
+.rules p{
+  font-size: 1rem;
+  font-weight:normal;
+  padding: 5px;
+  color: #ffffff;
+}
+
+.rules ul{
+  list-style-position: inside;
+}
+
+.rules ul li{
+  font-size: 1rem;
+  font-weight:normal;
+  padding: 5px;
+  padding-left: 25px;
+  color: #ffffff;
+}
+
+.rules{
+  text-align: left;
+  display: flex column;
+  margin: 0 auto;
+  max-width: 800px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
