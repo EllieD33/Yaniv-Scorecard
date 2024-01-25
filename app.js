@@ -23,7 +23,25 @@ function addScore(player) {
   const score = document.getElementById(player + 'Score');
   score.innerHTML = parseInt(score.innerHTML) + parseInt(scoreInput.value);
   scoreInput.value = '';
+  
+  halveScore(player);
 }
+
+//points halve at 100
+  //if a players score lands on 100 exactly, score is set to 50
+function halveScore(player) {
+  const scoreElement = document.getElementById(player + 'Score');
+  const currentScore = scoreElement.innerHTML;
+  if (currentScore === '100') {
+    scoreElement.innerHTML = '50';
+  }
+}
+
+//player bust
+  //if a players score goes above 100, they are bust
+
+//declare a winner
+  //when all but one player is bust, the remaining player is the winner
 
 // reset
 const resetBtn = document.querySelector("#resetBtn");
@@ -36,12 +54,3 @@ function resetCounter(){
   document.getElementById('player3Score').innerHTML = 0;
   document.getElementById('player4Score').innerHTML = 0;
 }
-
-
-  // winner
-
-  // var winner = document.querySelector('#winner');
-
-  // function printWinner(name){
-  //   if()
-  // }
