@@ -24,11 +24,14 @@ function addScore(player) {
   score.innerHTML = parseInt(score.innerHTML) + parseInt(scoreInput.value);
   scoreInput.value = '';
   
+  //points halve at 100
   halveScore(player);
+
+  //player bust 
+  playerBust(player);
 }
 
-//points halve at 100
-  //if a players score lands on 100 exactly, score is set to 50
+//if a players score lands on 100 exactly, score is set to 50
 function halveScore(player) {
   const scoreElement = document.getElementById(player + 'Score');
   const currentScore = scoreElement.innerHTML;
@@ -37,8 +40,16 @@ function halveScore(player) {
   }
 }
 
-//player bust
-  //if a players score goes above 100, they are bust
+//player goes bust if points exceed 100
+function playerBust(player) {
+  const scoreElement = document.getElementById(player + 'Score');
+  const currentScore = scoreElement.innerHTML;
+    if (parseInt(currentScore) > 100) {
+    document.getElementById(player + 'Score').style.textDecoration = 'line-through';
+    document.getElementById(player + 'Btn').disabled = true;
+    document.getElementById(player + 'Btn').innerHTML = 'BUST';
+  }
+}
 
 //declare a winner
   //when all but one player is bust, the remaining player is the winner
