@@ -1,109 +1,105 @@
+const numberOfPlayers = 4;
+
 // Add player names
 function setPlayerName(playerNumber) {
-  const playerName = document.getElementById(`player${playerNumber}Name`);
-  const addPlayerName = document.getElementById(`addPlayer${playerNumber}Name`);
+  const playerNameInput = document.getElementById(`player${playerNumber}Name`);
   const playerNameOutput = document.getElementById(`player${playerNumber}NameOutput`);
+  const addPlayerNameBtn = document.getElementById(`addPlayer${playerNumber}Name`);
 
-  function updatePlayerName() {
-    playerNameOutput.innerHTML = playerName.value;
-    document.querySelector(`#player${playerNumber}Name`).value = '';
-  }
-
-  addPlayerName.addEventListener('click', updatePlayerName);
+  addPlayerNameBtn.addEventListener('click', () => {
+    playerNameOutput.textContent = playerNameInput.value;
+    playerNameInput.value = '';
+  });
 }
-
-setPlayerName(1);
-setPlayerName(2);
-setPlayerName(3);
-setPlayerName(4);
 
 // Add scores
 function addScore(player) {
   const scoreInput = document.getElementById(player + 'ScoreInput');
-  const score = document.getElementById(player + 'Score');
-  score.innerHTML = parseInt(score.innerHTML) + parseInt(scoreInput.value);
+  const scoreElement = document.getElementById(player + 'Score');
+  const currentScore = +scoreElement.textContent;
+  const newScore = currentScore + +scoreInput.value;
+
+  scoreElement.textContent = newScore;
+  halveScore(player);
+  playerBust(player);
+  declareWinner();
   scoreInput.value = '';
   
-  //points halve at 100
-  halveScore(player);
-
-  //player bust 
-  playerBust(player);
-
-  //decalre winner
-  declareWinner();
 }
+
+// reset scores
+function resetPlayer(playerNumber) {
+  const scoreElement = document.getElementById(`player${playerNumber}Score`);
+  const playerBtn = document.getElementById(`player${playerNumber}Btn`);
+
+  scoreElement.textContent = '0';
+  scoreElement.style.textDecoration = 'none';
+  playerBtn.disabled = false;
+  playerBtn.textContent = 'Add score';
+  playerBtn.style.backgroundColor = '#2ecc71';
+}
+
 
 //if a players score lands on 100 exactly, score is set to 50
 function halveScore(player) {
   const scoreElement = document.getElementById(player + 'Score');
-  const currentScore = scoreElement.innerHTML;
-  if (currentScore === '100') {
-    scoreElement.innerHTML = '50';
+  console.log(scoreElement);
+  if (+scoreElement.innerText === 100) {
+    scoreElement.textContent = '50';
   }
 }
 
 //player goes bust if points exceed 100
 function playerBust(player) {
   const scoreElement = document.getElementById(player + 'Score');
-  const currentScore = scoreElement.innerHTML;
-    if (parseInt(currentScore) > 100) {
-    document.getElementById(player + 'Score').style.textDecoration = 'line-through';
-    document.getElementById(player + 'Btn').disabled = true;
-    document.getElementById(player + 'Btn').innerHTML = 'BUST';
-    document.getElementById(player + 'Btn').style.backgroundColor = '#2c3e50'
+  if (+scoreElement.textContent > 100) {
+    scoreElement.style.textDecoration = 'line-through';
+    const playerBtn = document.getElementById(player + 'Btn');
+    playerBtn.disabled = true;
+    playerBtn.textContent = 'BUST';
+    playerBtn.style.backgroundColor = '#2c3e50'
   }
 }
 
-//declare a winner
-  //when all but one player is bust, the remaining player is the winner
-function declareWinner(){
-  const players = [1, 2, 3, 4];
-  const activePlayers = players.filter(player => {
-    const score = parseInt(document.getElementById(`player${player}Score`).innerHTML);
-    return score < 100;
-  });
+//declare a winner when only one player remains 
+function declareWinner() {
+  const activePlayers = Array.from({ length: numberOfPlayers }, (_, i) => i + 1)
+    .filter(player => +document.getElementById(`player${player}Score`).textContent < 100);
+
   if (activePlayers.length === 1) {
     const winnerPlayerNumber = activePlayers[0];
     const winnerName = document.getElementById(`player${winnerPlayerNumber}NameOutput`).innerHTML;
     const winner = document.getElementById('winner')
-    winner.innerText = `${winnerName} wins!`
+    winner.textContent = `${winnerName} wins!`
+    winner.style.backgroundColor = '#2ecc71';
     document.getElementById('winner-container').style.backgroundColor = '#2ecc71';
-    document.getElementById('winner').style.backgroundColor = '#2ecc71';
   }
 }
 
-// reset
-const resetBtn = document.querySelector("#resetBtn");
-
-resetBtn.addEventListener("click", resetCounter);
-
-function resetCounter(){ 
-  for (let player = 1; player <= 4; player++) {
-    const playerScore = document.getElementById(`player${player}Score`);
-    const playerBtn = document.getElementById(`player${player}Btn`);
-
-    if (playerScore) {
-      playerScore.innerHTML = 0;
-      playerScore.style.textDecoration = 'none';
-    }
-
-    if (playerBtn) {
-      playerBtn.disabled = false;
-      playerBtn.innerHTML = 'Add score';
-      playerBtn.style.backgroundColor = '#2ecc71';
-    }
-  }
-
-  const winner = document.getElementById('winner');
-  const winnerContainer = document.getElementById('winner-container');
-
-  if (winner) {
-    winner.innerText = 'No winner yet. Keep playing!'
-    winner.style.backgroundColor = '#3498db';
-  }
-
-  if (winnerContainer) {
-    winnerContainer.style.backgroundColor = '#3498db';
+//Reset all scores and status'
+function resetCounter() {
+  for (let player = 1; player <= numberOfPlayers; player++) {
+    resetPlayer(player);
   }
 }
+
+const winner = document.getElementById('winner');
+if (winner) {
+  winner.textContent = 'No winner yet. Keep playing!'
+  winner.style.backgroundColor = '#3498db';
+}
+
+const winnerContainer = document.getElementById('winner-container');
+if (winnerContainer) {
+  winnerContainer.style.backgroundColor = '#3498db';
+}
+
+//Initialise player name and score
+for (let i = 1; i <= numberOfPlayers; i++) {
+  setPlayerName(i);
+  document.getElementById(`player${i}Btn`).addEventListener('click', () => addScore(i));
+}
+
+//Initialise reset button
+const resetBtn = document.getElementById('resetBtn');
+resetBtn.addEventListener('click', resetCounter);
