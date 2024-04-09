@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+.background {
+  
+}
+
 .pageHeading {
   color: #fff;
 }
@@ -43,7 +47,7 @@ a:hover, a:active {
 
 h1{
   text-align: center;
-  font-size: 8vw;
+  font-size: 3rem;
   background-color: #3498db;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -121,15 +125,20 @@ h4{
   border-radius: 5px;
 }
 
+.score-input{
+  background-color: #3498db;
+  margin-bottom: 10px;
+}
+
 .player-score button{
   border: 0;
   border-radius: 5px;
   color: whitesmoke;
   background-color: #2ecc71;
   height: auto;
-  font-size: 1.5rem;
-  margin:5px;
-  padding:4px;
+  max-height: 50px;
+  width: 30px;
+  font-size: 2rem;
 }
 
 .player-score button:hover{
@@ -141,6 +150,7 @@ h4{
   font-size: 2rem;
   max-width: 60px;
   height: auto;
+  max-height: 50px;
   border: 1px solid #c7c7c7;
   border-radius: 5px;
   background-color: #ecf0f1;
@@ -160,7 +170,7 @@ input[type=number] {
 
 .player-score span{
   width: 100px;
-  font-size: 2rem;
+  font-size: 4rem;
   background-color: #3498db;
 }
 
@@ -187,14 +197,8 @@ input[type=number] {
   background-color: rgb(136, 23, 23);
 }
 
-/* .winner h2{
-  text-align: center;
-  font-size: 3rem;
-  background-color:#6883BC;
-} */
-
 .rules h2{
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight:bolder;
   padding: 5px;
   background-color: #d5e0fa;
@@ -208,7 +212,7 @@ input[type=number] {
 }
 
 .rules h4{
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight:normal;
   padding: 5px;
   background-color: #d5e0fa;

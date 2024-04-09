@@ -35,7 +35,7 @@ function resetPlayer(playerNumber) {
   scoreElement.textContent = '0';
   scoreElement.style.textDecoration = 'none';
   playerBtn.disabled = false;
-  playerBtn.textContent = 'Add score';
+  playerBtn.textContent = '+';
   playerBtn.style.backgroundColor = '#2ecc71';
 }
 
@@ -56,7 +56,7 @@ function playerBust(player) {
     scoreElement.style.textDecoration = 'line-through';
     const playerBtn = document.getElementById(player + 'Btn');
     playerBtn.disabled = true;
-    playerBtn.textContent = 'BUST';
+    playerBtn.textContent = 'X';
     playerBtn.style.backgroundColor = '#2c3e50'
   }
 }
