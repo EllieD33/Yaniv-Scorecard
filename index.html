@@ -14,60 +14,12 @@
     <div class="background">
         <h1 class="pageHeading">Yaniv Scoreboard</h1>
         <div class="how-to-play">
-        <a href="./rules.html">How to play Yaniv!</a>
+            <a href="./rules.html">How to play Yaniv!</a>
         </div>
-        <div class="add-names">
+        <div class="add-names" id="addNamesContainer">
             <h2>Add player names</h2>
-            <div class="name-input-container">
-                <input class="name-input" name="player1Name" max-length="20" placeholder="Enter player 1 name" type="text" id="player1Name">
-                <input class="add-name-btn" type="button" value="Add name" id="addPlayer1Name">
-            </div>
-            <div class="name-input-container">
-                <input class="name-input" name="player2Name" max-length="20" placeholder="Enter player 2 name" type="text" id="player2Name">
-                <input class="add-name-btn" type="button" value="Add name" id="addPlayer2Name">
-            </div>
-            <div class="name-input-container">
-                <input class="name-input" name="player3Name" max-length="20" placeholder="Enter player 3 name" type="text" id="player3Name">
-                <input class="add-name-btn" type="button" value="Add name" id="addPlayer3Name">
-            </div>
-            <div class="name-input-container">
-                <input class="name-input" name="player4Name" max-length="20" placeholder="Enter player 4 name" type="text" id="player4Name">
-                <input class="add-name-btn" type="button" value="Add name" id="addPlayer4Name">
-            </div>
         </div>
-        <div class="scoreboard">
-            <div class="player-score">
-                <h4 id="player1NameOutput">Player 1</h4>
-                <span id="player1Score">0</span>
-                <div class = "score-input">
-                    <input id="player1ScoreInput" type="number">
-                    <button id="player1Btn" onclick="addScore('player1')">+</button>
-                </div>    
-            </div>
-            <div class="player-score">
-                <h4 id="player2NameOutput">Player 2</h4>
-                <span id="player2Score">0</span>
-                <div class = "score-input">
-                    <input id="player2ScoreInput" type="number">
-                    <button id="player2Btn" onclick="addScore('player2')">+</button>
-                </div>
-            </div>
-            <div class="player-score">
-                <h4 id="player3NameOutput">Player 3</h4>
-                <span id="player3Score">0</span>
-                <div class = "score-input">
-                    <input id="player3ScoreInput" type="number">
-                    <button id="player3Btn" onclick="addScore('player3')">+</button>
-                </div>
-            </div>
-            <div class="player-score">
-                <h4 id="player4NameOutput">Player 4</h4>
-                <span id="player4Score">0</span>
-                <div class = "score-input">
-                    <input id="player4ScoreInput" type="number">
-                    <button id="player4Btn" onclick="addScore('player4')">+</button>
-                </div>
-            </div>
+        <div class="scoreboard" id="scoreboardContainer">
         </div>
         <div class="reset">
             <button id="resetBtn">Reset scores</button>

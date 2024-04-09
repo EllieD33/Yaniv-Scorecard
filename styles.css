@@ -81,6 +81,10 @@ h4{
   background-color: #3498db;
 }
 
+.player-info{
+  background-color: #3498db;
+}
+
 .name-input{
   font-size: 1rem;
   height: auto;
@@ -130,7 +134,7 @@ h4{
   margin-bottom: 10px;
 }
 
-.player-score button{
+.player-score div button{
   border: 0;
   border-radius: 5px;
   color: whitesmoke;
@@ -139,6 +143,7 @@ h4{
   max-height: 50px;
   width: 30px;
   font-size: 2rem;
+  margin-left: 5px;
 }
 
 .player-score button:hover{
@@ -154,6 +159,7 @@ h4{
   border: 1px solid #c7c7c7;
   border-radius: 5px;
   background-color: #ecf0f1;
+  caret-color: #2c3e50;
 }
 
 /* Chrome, Safari, Edge, Opera */
