@@ -157,9 +157,9 @@ function resetCounter() {
   }
   const winner = document.getElementById('winner');
   winner.textContent = 'No winner yet. Keep playing!'
-  winner.style.backgroundColor = '#3498db';
+  winner.style.backgroundColor = 'var(--secondary)';
   const winnerContainer = document.getElementById('winner-container');
-  winnerContainer.style.backgroundColor = '#3498db';
+  winnerContainer.style.backgroundColor = 'var(--secondary)';
 }
 
 // Initialize player name and score
@@ -170,3 +170,4 @@ for (let i = 1; i <= numberOfPlayers; i++) {
 // Initialize reset button
 const resetBtn = document.getElementById('resetBtn');
 resetBtn.addEventListener('click', resetCounter);
+

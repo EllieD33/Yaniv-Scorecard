@@ -1,18 +1,30 @@
+:root {
+  --primary: #3498db;
+  --secondary: #6ad5e5;
+  --button: #2ecc71;
+  --dark: #2c3e50;
+  --light: #F5F5F5;
+}
+
 *{
-  color: #2c3e50;
-  background-color: #ecf0f1;
+  color: var(--dark);
+  background-color: var(--light);
   font-family: 'Roboto Flex', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.background {
-  
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .pageHeading {
-  color: #fff;
+  color: var(--light);
+  background-color: var(--secondary);
 }
 
 .how-to-play{
@@ -27,14 +39,13 @@
 .how-to-play a{  
   border-radius: 6px;
   font-size: 1rem;
-  background-color: #3498db;
-  color: #fff;  
+  color: var(--light);  
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a:link, a:visited {
-  background-color: #3498db;
-  color: white;
+  background-color: var(--primary);
+  color: var(--light);
   padding: 14px 25px;
   text-align: center;
   text-decoration: none;
@@ -42,13 +53,13 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-  background-color: #2ecc71;
+  background-color: var(--button);
 }
 
 h1{
   text-align: center;
   font-size: 3rem;
-  background-color: #3498db;
+  background-color: var(--primary);
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -57,32 +68,34 @@ h4{
   font-size: 2rem;
   font-weight:normal;
   margin: 5px;
-  background-color: #3498db;
+  background-color: var(--primary);
 }
 
+/* Adding names */
 .add-names{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
   margin:15px;
   align-items: center;
-  background-color: #3498db;
+  background-color: var(--primary);
   border-radius: 5px;
   padding: 10px;
+  width: 75vw;
+  max-width: 650px;
 }
 
 .add-names h2{
-  background-color: #3498db;
+  background-color: var(--primary);
   padding: 2px;
 }
 
 .name-input-container{
-  background-color: #3498db;
+  background-color: var(--primary);
 }
 
 .player-info{
-  background-color: #3498db;
+  background-color: var(--primary);
 }
 
 .name-input{
@@ -98,7 +111,7 @@ h4{
   border: 0;
   border-radius: 5px;
   color: whitesmoke;
-  background-color: #2ecc71;
+  background-color: var(--button);
   height: auto;
   font-size: 1rem;
   margin:5px;
@@ -110,12 +123,12 @@ h4{
   background-color: #27ae60;
 }
 
+/* Scoreboard and cards */
 .scoreboard{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin:15px;
-  border-radius: 5px;
 }
 
 .player-score{
@@ -125,20 +138,21 @@ h4{
   text-align: center;
   margin:10px;
   align-items: center;
-  background-color: #3498db ;
-  border-radius: 5px;
+  background-color: var(--primary) ;
+  border-radius: 10px;
+  box-shadow: 0px 3px 18px 3px rgba(43, 25, 174, 0.2);
 }
 
 .score-input{
-  background-color: #3498db;
+  background-color: var(--primary);
   margin-bottom: 10px;
 }
 
 .player-score div button{
   border: 0;
   border-radius: 5px;
-  color: whitesmoke;
-  background-color: #2ecc71;
+  color: var(--light);
+  background-color: var(--button);
   height: auto;
   max-height: 50px;
   width: 30px;
@@ -147,7 +161,7 @@ h4{
 }
 
 .player-score button:hover{
-  color: #fff;
+  color: var(--light);
   background-color: #27ae60;
 }
 
@@ -159,7 +173,7 @@ h4{
   border: 1px solid #c7c7c7;
   border-radius: 5px;
   background-color: #ecf0f1;
-  caret-color: #2c3e50;
+  caret-color: var(--dark);
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -177,9 +191,10 @@ input[type=number] {
 .player-score span{
   width: 100px;
   font-size: 4rem;
-  background-color: #3498db;
+  background-color: var(--primary);
 }
 
+/* Reset button */
 .reset{
   display: flex;
   margin: 0 auto;
@@ -191,7 +206,7 @@ input[type=number] {
 #resetBtn{
   border: 0;
   border-radius: 5px;
-  color: whitesmoke;
+  color: var(--light);
   background-color: rgb(214, 0, 0);
   height: auto;
   font-size: 2rem;
@@ -203,6 +218,25 @@ input[type=number] {
   background-color: rgb(136, 23, 23);
 }
 
+/* Winner banner */
+.winner {
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin:15px;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  width: 75vw;
+}
+
+.winner h2 {
+  background-color: var(--secondary);
+}
+
+/* Rules page */
 .rules h2{
   font-size: 2.5rem;
   font-weight:bolder;
@@ -228,7 +262,7 @@ input[type=number] {
   font-size: 1rem;
   font-weight:normal;
   padding: 5px;
-  color: #383838;
+  color: var(--dark);
 }
 
 .rules ul{
@@ -240,7 +274,7 @@ input[type=number] {
   font-weight:normal;
   padding: 5px;
   padding-left: 25px;
-  color: #383838;
+  color: var(--dark);
 }
 
 .rules{
