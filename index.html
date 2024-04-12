@@ -9,28 +9,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <script src="../app.js" defer type="text/JavaScript"></script>
 </head>
 <body>
-    <div class="header"></div>
-    <div>
+    <nav>
         <h1 class="pageHeading">Yaniv Scoreboard</h1>
+        <div>
+        <a class="nav-button" href="./rules.html">How to play</a>
+        </div>
+    </nav>
+    <div class="names-container">
+        <h2>Add player names</h2>
+        <div id="player-inputs"></div>
     </div>
-    <div class="how-to-play">
-        <a href="./rules.html">How to play Yaniv!</a>
+    <div class="card-container" id="card-container"></div>
+    <div class="reset">
+        <button id="reset-btn">Reset scores</button>
     </div>
-    <div class="main-content">
-        <div class="add-names" id="addNamesContainer">
-            <h2>Add player names</h2>
-        </div>
-        <div class="scoreboard" id="scoreboardContainer">
-        </div>
-        <div class="reset">
-            <button id="resetBtn">Reset scores</button>
-        </div>
-        <div class="winner" id="winner-container">
-            <h2 id="winner">No winner yet. Keep playing!</h2>
-        </div>
+    <div class="winner add-names" id="winner-container">
+        <h2 id="winner">No winner yet. Keep playing!</h2>
     </div>
-    <script src="../Yaniv-Scorecard/" defer type="text/JavaScript"></script>
 </body>
 </html>

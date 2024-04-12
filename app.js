@@ -1,173 +1,176 @@
 const numberOfPlayers = 4;
 
-// Generate the player inputs and scoreboards
+// // Clear input fields on page load
+// window.addEventListener('load', function() {
+//   for (let i = 1; i <= numberOfPlayers; i++) {
+//     const playerName = document.getElementById(`player${i}-name`);
+//     playerName.value = ''; // Clear input field value
+//   }
+// });
+
+//Generate player name input and scorecards
 function generatePlayers() {
-  const addNamesContainer = document.getElementById('addNamesContainer');
-  const scoreboardContainer = document.getElementById('scoreboardContainer');
+  const playerInputsContainer = document.getElementById('player-inputs');
+  const cardContainer = document.getElementById('card-container');
 
   for (let i = 1; i <= numberOfPlayers; i++) {
-    // Create div to contain player name input and add name button
-    const playerDiv = document.createElement('div');
-    playerDiv.className = 'player-info';
+      // Player name input fields
+      const inputContainer = document.createElement('div');
+      inputContainer.classList.add('name-input-container');
+      inputContainer.innerHTML = `
+          <input class="name-input" name="player${i}-name" max-length="20" placeholder="Enter player ${i} name" type="text" id="player${i}-name">
+          <input class="add-name-btn" type="button" value="Add name" id="add-player${i}-name">
+      `;
+      playerInputsContainer.appendChild(inputContainer);
 
-    // Generate name input
-    const playerNameInput = document.createElement('input');
-    playerNameInput.className = 'name-input';
-    playerNameInput.name = `player${i}Name`;
-    playerNameInput.maxLength = 20;
-    playerNameInput.placeholder = `Enter player ${i} name`;
-    playerNameInput.type = 'text';
-    playerNameInput.id = `player${i}Name`;
-    playerDiv.appendChild(playerNameInput);
+      // Player scorecards
+      const card = document.createElement('div');
+      card.classList.add('card');
+      card.id = `player${i}-card`;
+      card.innerHTML = `
+          <div class="card-inner" id="player${i}-card-inner">
+              <div class="card-face card-face-front">
+                  <h2 id="player${i}-name-output">Player ${i}</h2>
+                  <h2 class="card-score" id="player${i}-card-score">0</h2>
+                  <div class="score-adder">
+                      <input type="number" id="player${i}-score-input">
+                      <button id="player${i}-add-score-btn">+</button>
+                  </div>
+              </div>
+              <div class="card-face card-face-back" id="player${i}-card-face-back">
+                  <h2 id="player${i}-name-bust">Player ${i}</h2>
+                  <h2>is bust!</h2>
+                  <h2 class="card-score" id="player${i}-card-score-bust">0</h2>
+              </div>
+          </div>
+      `;
+      cardContainer.appendChild(card);
 
-    // Generate add name button
-    const addNameBtn = document.createElement('input');
-    addNameBtn.className = 'add-name-btn';
-    addNameBtn.type = 'button';
-    addNameBtn.value = 'Add name';
-    addNameBtn.id = `addPlayer${i}Name`;
-    addNameBtn.addEventListener('click', () => setPlayerName(i));
-    playerDiv.appendChild(addNameBtn);
+      // Add event listeners for adding player names and scores
+    const addPlayerNameButton = document.getElementById(`add-player${i}-name`);
+    const addScoreButton = document.getElementById(`player${i}-add-score-btn`);
 
-    // Append player div to addNamesContainer
-    addNamesContainer.appendChild(playerDiv);
-
-    // Generate player scoreboard
-    const playerScoreDiv = document.createElement('div');
-    playerScoreDiv.className = 'player-score';
-    scoreboardContainer.appendChild(playerScoreDiv);
-
-    const playerNameOutput = document.createElement('h4');
-    playerNameOutput.id = `player${i}NameOutput`;
-    playerNameOutput.textContent = `Player ${i}`;
-    playerScoreDiv.appendChild(playerNameOutput);
-
-    const playerScoreSpan = document.createElement('span');
-    playerScoreSpan.id = `player${i}Score`;
-    playerScoreSpan.textContent = '0';
-    playerScoreDiv.appendChild(playerScoreSpan);
-
-    const scoreInputDiv = document.createElement('div');
-    scoreInputDiv.className = 'score-input';
-    playerScoreDiv.appendChild(scoreInputDiv);
-
-    const scoreInput = document.createElement('input');
-    scoreInput.id = `player${i}ScoreInput`;
-    scoreInput.type = 'number';
-    scoreInputDiv.appendChild(scoreInput);
-
-    const addScoreBtn = document.createElement('button');
-    addScoreBtn.id = `player${i}Btn`;
-    addScoreBtn.textContent = '+';
-    addScoreBtn.addEventListener('click', () => {
-      addScore(`player${i}`);
+    addPlayerNameButton.addEventListener('click', function() {
+      setPlayerName(i);
     });
-    scoreInputDiv.appendChild(addScoreBtn);
+
+    addScoreButton.addEventListener('click', function() {
+      addScore(i);
+    });
   }
-
-  // Initialize reset button after players are generated
-  initializeResetButton();
 }
 
-// Initialize reset button
-function initializeResetButton() {
-  const resetBtn = document.getElementById('resetBtn');
-  resetBtn.addEventListener('click', resetCounter);
-}
-
-// Call the function to generate players when the page loads
-window.addEventListener('load', generatePlayers);
+window.addEventListener('load', function() {
+  generatePlayers(); 
+});
 
 // Add player names
 function setPlayerName(playerNumber) {
-  const playerNameInput = document.getElementById(`player${playerNumber}Name`);
-  const playerNameOutput = document.getElementById(`player${playerNumber}NameOutput`);
+  const playerName = document.getElementById(`player${playerNumber}-name`);
+  const playerNameOutput = document.getElementById(`player${playerNumber}-name-output`);
 
-  playerNameOutput.textContent = playerNameInput.value;
-  playerNameInput.value = '';
+  function updatePlayerName() {
+    playerNameOutput.textContent = playerName.value;
+    playerName.value = '';
+  }
+  updatePlayerName();
 }
 
 // Add scores
-function addScore(player) {
-  const scoreInput = document.getElementById(player + 'ScoreInput');
-  const scoreElement = document.getElementById(player + 'Score');
-  const currentScore = +scoreElement.textContent;
-  const newScore = currentScore + +scoreInput.value;
-
-  scoreElement.textContent = newScore;
-  halveScore(player);
-  playerBust(player);
-  declareWinner();
+function addScore(playerNumber) {
+  const scoreInput = document.getElementById(`player${playerNumber}-score-input`);
+  const score = document.getElementById(`player${playerNumber}-card-score`);
+  score.textContent = parseInt(score.textContent) + parseInt(scoreInput.value);
   scoreInput.value = '';
+  
+  halveScore(playerNumber);
+  playerBust(playerNumber);
+  declareWinner();
 }
 
-// reset scores
-function resetPlayer(playerNumber) {
-  const scoreElement = document.getElementById(`player${playerNumber}Score`);
-  const playerBtn = document.getElementById(`player${playerNumber}Btn`);
-
-  scoreElement.textContent = '0';
-  scoreElement.style.textDecoration = 'none';
-  playerBtn.disabled = false;
-  playerBtn.textContent = '+';
-  playerBtn.style.backgroundColor = '#2ecc71';
-}
-
-// If a player's score lands on 100 exactly, score is set to 50
-function halveScore(player) {
-  const scoreElement = document.getElementById(player + 'Score');
-
-  if (+scoreElement.innerText === 100) {
+//if a players score lands on 100 exactly, score is set to 50
+function halveScore(playerNumber) {
+  const scoreElement = document.getElementById(`player${playerNumber}-card-score`);
+  const currentScore = scoreElement.textContent;
+  if (currentScore === '100') {
     scoreElement.textContent = '50';
   }
 }
 
-// Player goes bust if points exceed 100
-function playerBust(player) {
-  const scoreElement = document.getElementById(player + 'Score');
+//player goes bust if points exceed 100
+function playerBust(playerNumber) {
+  const scoreElement = document.getElementById(`player${playerNumber}-card-score`);
+  const currentScore = +scoreElement.textContent;
+  const bustScoreElement = document.getElementById(`player${playerNumber}-card-score-bust`);
+  const playerName = document.getElementById(`player${playerNumber}-name-output`);
+  const playerNameBust = document.getElementById(`player${playerNumber}-name-bust`);
 
-  if (+scoreElement.textContent > 100) {
-    scoreElement.style.textDecoration = 'line-through';
-    const playerBtn = document.getElementById(player + 'Btn');
-    playerBtn.disabled = true;
-    playerBtn.textContent = 'X';
-    playerBtn.style.backgroundColor = '#2c3e50';
+  playerNameBust.textContent = playerName.textContent;
+  bustScoreElement.textContent = currentScore;
+
+    if (currentScore > 100) {
+    const card = document.querySelector(`#player${playerNumber}-card-inner`);
+    document.getElementById(`player${playerNumber}-card-face-back`).style.color = 'var(--light)';
+    card.classList.add('is-flipped');
+    
   }
 }
 
-// Declare a winner when only one player remains 
-function declareWinner() {
-  const activePlayers = Array.from({ length: numberOfPlayers }, (_, i) => i + 1)
-    .filter(player => +document.getElementById(`player${player}Score`).textContent < 100);
-
+//declare a winner
+  //when all but one player is bust, the remaining player is the winner
+function declareWinner(){
+  const players = [1, 2, 3, 4];
+  const activePlayers = players.filter(player => {
+    const score = parseInt(document.getElementById(`player${player}-card-score`).textContent);
+    return score < 100;
+  });
   if (activePlayers.length === 1) {
     const winnerPlayerNumber = activePlayers[0];
-    const winnerName = document.getElementById(`player${winnerPlayerNumber}NameOutput`).innerHTML;
-    const winner = document.getElementById('winner');
-    winner.textContent = `${winnerName} wins!`;
-    winner.style.backgroundColor = '#2ecc71';
-    document.getElementById('winner-container').style.backgroundColor = '#2ecc71';
+    const winnerName = document.getElementById(`player${winnerPlayerNumber}-name-output`).textContent;
+    const winner = document.getElementById('winner')
+    winner.innerText = `${winnerName} wins!`
   }
 }
 
-//Reset all scores and status'
-function resetCounter() {
-  for (let player = 1; player <= numberOfPlayers; player++) {
-    resetPlayer(player);
+// reset
+const resetBtn = document.querySelector("#reset-btn");
+
+resetBtn.addEventListener("click", resetCounter);
+
+function resetCounter(){ 
+  for (let player = 1; player <= 4; player++) {
+    const playerScore = document.getElementById(`player${player}-card-score`);
+    const playerBtn = document.getElementById(`player${player}-add-score-btn`);
+
+    if (playerScore) {
+      playerScore.textContent = 0;
+      const card = document.querySelector(`#player${player}-card-inner`);
+      card.classList.remove('is-flipped');
+    }
   }
+
   const winner = document.getElementById('winner');
-  winner.textContent = 'No winner yet. Keep playing!'
-  winner.style.backgroundColor = 'var(--secondary)';
   const winnerContainer = document.getElementById('winner-container');
-  winnerContainer.style.backgroundColor = 'var(--secondary)';
+
+  if (winner) {
+    winner.innerText = 'No winner yet. Keep playing!'
+    winner.style.backgroundColor = '#3498db';
+  }
+
+  if (winnerContainer) {
+    winnerContainer.style.backgroundColor = '#3498db';
+  }
 }
 
-// Initialize player name and score
+//Initialise player names and scores
 for (let i = 1; i <= numberOfPlayers; i++) {
   setPlayerName(i);
 }
 
-// Initialize reset button
-const resetBtn = document.getElementById('resetBtn');
-resetBtn.addEventListener('click', resetCounter);
-
+// Add event listeners for adding scores
+for (let i = 1; i <= numberOfPlayers; i++) {
+  const addScoreButton = document.getElementById(`player${i}-add-score-btn`);
+  addScoreButton.addEventListener('click', function() {
+    addScore(i);
+  });
+}
