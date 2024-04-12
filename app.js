@@ -70,8 +70,10 @@ function setPlayerName(playerNumber) {
   const playerNameOutput = document.getElementById(`player${playerNumber}-name-output`);
 
   function updatePlayerName() {
+    if (playerName.value != '') {
     playerNameOutput.textContent = playerName.value;
     playerName.value = '';
+    }
   }
   updatePlayerName();
 }
@@ -80,7 +82,11 @@ function setPlayerName(playerNumber) {
 function addScore(playerNumber) {
   const scoreInput = document.getElementById(`player${playerNumber}-score-input`);
   const score = document.getElementById(`player${playerNumber}-card-score`);
-  score.textContent = parseInt(score.textContent) + parseInt(scoreInput.value);
+  
+  const inputNumber = parseInt(scoreInput.value);
+  if (!isNaN(inputNumber)) {
+    score.textContent = parseInt(score.textContent) + inputNumber;
+  }
   scoreInput.value = '';
   
   halveScore(playerNumber);
@@ -154,11 +160,6 @@ function resetCounter(){
 
   if (winner) {
     winner.innerText = 'No winner yet. Keep playing!'
-    winner.style.backgroundColor = '#3498db';
-  }
-
-  if (winnerContainer) {
-    winnerContainer.style.backgroundColor = '#3498db';
   }
 }
 
