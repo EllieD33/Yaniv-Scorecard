@@ -1,13 +1,5 @@
 const numberOfPlayers = 4;
 
-// // Clear input fields on page load
-// window.addEventListener('load', function() {
-//   for (let i = 1; i <= numberOfPlayers; i++) {
-//     const playerName = document.getElementById(`player${i}-name`);
-//     playerName.value = ''; // Clear input field value
-//   }
-// });
-
 //Generate player name input and scorecards
 function generatePlayers() {
   const playerInputsContainer = document.getElementById('player-inputs');
@@ -122,8 +114,7 @@ function playerBust(playerNumber) {
   }
 }
 
-//declare a winner
-  //when all but one player is bust, the remaining player is the winner
+//declare winner when all but one player is bust
 function declareWinner(){
   const players = [1, 2, 3, 4];
   const activePlayers = players.filter(player => {
@@ -138,7 +129,7 @@ function declareWinner(){
   }
 }
 
-// reset
+// reset scores
 const resetBtn = document.querySelector("#reset-btn");
 
 resetBtn.addEventListener("click", resetCounter);
@@ -146,8 +137,7 @@ resetBtn.addEventListener("click", resetCounter);
 function resetCounter(){ 
   for (let player = 1; player <= 4; player++) {
     const playerScore = document.getElementById(`player${player}-card-score`);
-    const playerBtn = document.getElementById(`player${player}-add-score-btn`);
-
+    
     if (playerScore) {
       playerScore.textContent = 0;
       const card = document.querySelector(`#player${player}-card-inner`);
@@ -156,11 +146,22 @@ function resetCounter(){
   }
 
   const winner = document.getElementById('winner');
-  const winnerContainer = document.getElementById('winner-container');
 
   if (winner) {
     winner.innerText = 'No winner yet. Keep playing!'
   }
+}
+
+//New game
+const newGameBtn = document.getElementById('new-game-btn');
+newGameBtn.addEventListener("click", startNewGame);
+
+function startNewGame () {
+  for (let player = 1; player <= 4; player++) {
+    const playerName = document.getElementById(`player${player}-name-output`);
+    playerName.textContent = `Player ${player}`;
+  }
+  resetCounter();
 }
 
 //Initialise player names and scores
