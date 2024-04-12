@@ -8,10 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="rules.css" rel="stylesheet">
 </head>
 <body>
-    <h1 class="pageHeading">Yaniv!</h1>
+    <nav>
+        <a class="nav-button" href="./index.html">New game</a>
+        <h1 class="page-heading">Yaniv Scoreboard</h1>
+        <div>
+        <a class="nav-button" href="./rules.html">How to play</a>
+        </div>
+    </nav>
     <div class="rules">
         <h2>About Yaniv</h2>
         <p>Yaniv is a card game for 2+ players, though the ideal number of players is between 2 and 5 people.</p>
@@ -52,16 +58,17 @@
         <ul>
             <li>Jokers score 0 points.</li>
             <li>Ace is worth 1 point.</li>
-            <li>Cards 2-10 score points equal to the number on the card (for instance, 3 of Diamonds is worth 3 points, 8 of Clubs is worth 8 points).</li>
+            <li>Cards 2-10 score points equal to the number on the card.</li>
             <li>Face cards (Jack, Queen, King) are 10 points.</li>
         </ul>
-        <p>The person with the lowest scoring hand is the winner of the round. Everyone apart from the person who called "Yaniv!" gets points equal to the value of their hand. If the person who called "Yaniv!" has the hand worth the fewest points, they win the round and are given a score of zero. If, however, another player has a hand worth equal or fewer points than the person who called "Yaniv!", this is called an "Asaf". When an "Asaf" happens, the player who called "Yaniv!" is given 25 points as a penalty (the player with the lowest scoring hand gets the same points as they otherwise would have - i.e. the value of their hand).</p>
-        <h4>Ending the game</h4>
+        <p>The person with the lowest scoring hand is the winner of the round.</p>
+        <p>Everyone apart from the person who called "Yaniv!" gets points equal to the value of their hand.</p>
+        <p>If the person who called "Yaniv!" has the hand worth the fewest points, they win the round and are given a score of zero.</p>
+        <p>If another player has a hand worth equal or fewer points than the person who called "Yaniv!", this is called an "Asaf".</p>
+        <p>When an "Asaf" happens, the player who called "Yaniv!" is given 25 points as a penalty.</p>
+        <p>The player with the lowest scoring hand gets the same points as they otherwise would have - i.e. the value of their hand.</p>        <h4>Ending the game</h4>
         <p>A total score tally is kept for each round. Once a player's score exceeds 100 points, they are out of the game. The winner of the game is the last remaining player.</p>
         <p>If a player's score lands on exactly 100 points, their score is halved to 50 points and they can continue to play from that score.</p>
     </div>
-    <div class="how-to-play">
-        <a href="./index.html">Go to scoreboard</a>
-        </div>
 </body>
 </html>

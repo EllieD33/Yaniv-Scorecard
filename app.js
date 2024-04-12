@@ -152,7 +152,7 @@ function resetCounter(){
   }
 }
 
-//New game
+//New game - resets names and scores
 const newGameBtn = document.getElementById('new-game-btn');
 newGameBtn.addEventListener("click", startNewGame);
 

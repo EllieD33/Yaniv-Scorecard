@@ -47,6 +47,7 @@ nav {
   background-color: var(--dark);  
   border: 1px solid transparent;
   transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
 }
 
 a:link, a:visited {
@@ -109,13 +110,13 @@ a:link, a:visited {
   flex-wrap: wrap;
   max-width: 60vw;
   justify-content: space-between;
-  gap: 50px;
+  gap: 20px;
 }
 
 .card {
   margin: 10px auto 0;
-  width: 200px;
-  height: 250px;
+  width: 170px;
+  height: 200px;
 }
 
 .card-inner {
@@ -142,7 +143,7 @@ a:link, a:visited {
   font-size: 4rem !important;
 }
 
-.score-adder{
+.score-adder {
   margin-bottom: 10px;
 }
 
@@ -167,7 +168,7 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-.score-adder button{
+.score-adder button {
   border: 0;
   border-radius: 5px;
   color: var(--light);
@@ -181,7 +182,7 @@ input[type=number] {
   padding-bottom: 1px;
 }
 
-.score-adder button:hover{
+.score-adder button:hover {
   color: var(--light);
   background-color: var(--button-hover);
 }
@@ -215,7 +216,7 @@ input[type=number] {
 }
 
 /* Reset button */
-.reset{
+.reset {
   display: flex;
   margin: 50px auto;
   max-width: 300px;
@@ -223,18 +224,18 @@ input[type=number] {
   margin-bottom: 10px;
 }
 
-#reset-btn{
+#reset-btn {
   border: 0;
-  border-radius: 5px;
+  border-radius: 6px;
   color: var(--light);
   background-color: rgb(214, 0, 0);
   height: auto;
   font-size: 2rem;
   margin:5px;
-  padding:4px;
+  padding: 4px 8px;
 }
 
-#reset-btn:hover{
+#reset-btn:hover {
   background-color: rgb(136, 23, 23);
 }
 
